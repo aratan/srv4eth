@@ -2,10 +2,10 @@ package main
 
 import(
 	"fmt"
-	"github.com/aratan/eth/cuentas"
-	"github.com/aratan/eth/saldo"
-	"github.com/aratan/eth/envio"
-	//"github.com/aratan/eth/conversion"
+	"github.com/aratan/srv4eth/cuentas"
+	"github.com/aratan/srv4eth/saldo"
+	"github.com/aratan/srv4eth/envio"
+	//"github.com/aratan/srv4eth/conversion"
 )
 
 func main() {

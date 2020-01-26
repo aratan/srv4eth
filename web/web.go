@@ -1,7 +1,7 @@
 package web
 
 import (
-	"github.com/aratan/eth/cuentas"
+	"github.com/aratan/srv4eth/cuentas"
 	"fmt"
 	"io"
 	"log"
