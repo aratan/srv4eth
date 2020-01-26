@@ -1,0 +1,25 @@
+package envio
+
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"os/exec"
+	"strings"
+)
+
+//http://json2struct.mervine.net/
+type Myenvio struct {
+	ID      int    `json:"id"`
+	Jsonrpc string `json:"jsonrpc"`
+	Result  string `json:"result"`
+}
+
+var myenvio Myenvio
+
+func Show() string {
+	dato := `{"jsonrpc":"2.0","method":"eth_sendTransaction","params":[{"from": "'0xC154A403D098C421cDd07fA05764A45ABA2C014b'", "to": "'0x234A9CD191CBFCecfDFdC8B3f554996fF378dCAb'", "value": "0xc63"}],"id":1}`
+
+	fmt.Println(stdoutStderr)}
