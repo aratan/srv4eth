@@ -36,7 +36,7 @@ func Show() string {
 
 	// Configuracion servicio web
 	server := &http.Server{
-		Addr:           ":80",
+		Addr:           "127.0.0.1:80",
 		Handler:		r,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
@@ -44,7 +44,7 @@ func Show() string {
 	}
 
 	//activa servidor web
-	log.Println("Escuchando 80")
+	log.Println("Create by Victor Arbiol Martinez\nlistening... 127.0.0.1:80")
 	log.Fatal(server.ListenAndServe())
 	return ""
 }
