@@ -3,6 +3,7 @@ package web
 import (
 	"github.com/aratan/srv4eth/cuentas"
 	"github.com/aratan/srv4eth/saldo"
+	"github.com/aratan/srv4eth/envio"
 	//"fmt"
 	//"io/ioutil"
 	"log"
@@ -16,23 +17,28 @@ import (
 
 type Comandos struct {
     Cuentas string
-    Saldo   string
+	Saldo   string
+	Tx      string
 }
 
 func Gethandler(w http.ResponseWriter, r *http.Request) {
-
 	p := Comandos{Cuentas: 	cuentas.Show(), Saldo:	saldo.Show() }
 	t, _ := template.ParseFiles("index.html")
 	t.Execute(w, p)	
 }
 
+func Posthandler(w http.ResponseWriter, r *http.Request) {
+	p := Comandos{Cuentas: 	cuentas.Show(),Tx: 	envio.Show(), Saldo:	saldo.Show() }
+	t, _ := template.ParseFiles("index.html")
+	t.Execute(w, p)	
+}
 
 func Show() string {
 	// Ruteador
 	r := mux.NewRouter().StrictSlash(false)
 	// Rutas
 	r.HandleFunc("/", Gethandler).Methods("GET")
-
+	r.HandleFunc("/", Posthandler).Methods("POST")
 
 	// Configuracion servicio web
 	server := &http.Server{
