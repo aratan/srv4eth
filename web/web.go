@@ -23,7 +23,7 @@ func Gethandler(w http.ResponseWriter, r *http.Request) {
 }
 
 
-func Show() string {
+func Show()  {
 	// Ruteador
 	r := mux.NewRouter().StrictSlash(false)
 	// Rutas
@@ -42,5 +42,5 @@ func Show() string {
 	//activa servidor web
 	log.Println("Escuchando 80")
 	log.Fatal(server.ListenAndServe())
-	return ""
+
 }
