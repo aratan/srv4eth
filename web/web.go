@@ -2,28 +2,32 @@ package web
 
 import (
 	"github.com/aratan/srv4eth/cuentas"
+	"github.com/aratan/srv4eth/saldo"
 	//"fmt"
-	"io"
+	//"io/ioutil"
 	"log"
 	"net/http"
 	"github.com/gorilla/mux"
-	//"html/template"
+	"html/template"
+	//"os"
 	//"strconv"
 	"time"
 )
 
-
-
+type Comandos struct {
+    Cuentas string
+    Saldo   string
+}
 
 func Gethandler(w http.ResponseWriter, r *http.Request) {
-	var cuenta string
-	cuenta = "Mi cuenta: " + cuentas.Show()
-	//cuenta := cuentas.Show()
-	io.WriteString(w, cuenta)
+
+	p := Comandos{Cuentas: 	cuentas.Show(), Saldo:	saldo.Show() }
+	t, _ := template.ParseFiles("index.html")
+	t.Execute(w, p)	
 }
 
 
-func Show()  {
+func Show() string {
 	// Ruteador
 	r := mux.NewRouter().StrictSlash(false)
 	// Rutas
@@ -42,5 +46,5 @@ func Show()  {
 	//activa servidor web
 	log.Println("Escuchando 80")
 	log.Fatal(server.ListenAndServe())
-
+	return ""
 }
